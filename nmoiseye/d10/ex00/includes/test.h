@@ -1,3 +1,0 @@
-
-#define LOL 15
-
