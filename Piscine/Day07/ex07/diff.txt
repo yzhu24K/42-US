@@ -1,0 +1,103 @@
+4c4
+< /*   ft_split.c                                         :+:      :+:    :+:   */
+---
+> /*   ft_split_whitespaces.c                             :+:      :+:    :+:   */
+6c6
+< /*   By: yzhu <marvin@42.fr>                        +#+  +:+       +#+        */
+---
+> /*   By: jhalford <marvin@42.fr>                    +#+  +:+       +#+        */
+8,9c8,9
+< /*   Created: 2017/05/06 20:17:41 by yzhu              #+#    #+#             */
+< /*   Updated: 2017/05/06 21:28:22 by yzhu             ###   ########.fr       */
+---
+> /*   Created: 2016/08/08 09:33:37 by jhalford          #+#    #+#             */
+> /*   Updated: 2016/08/11 10:42:18 by jhalford         ###   ########.fr       */
+15c15,17
+< int		ft_is_sep(char str, char *charset)
+---
+> #define SEP(x) (x==' ' || x=='\n' || x=='\t')
+> 
+> int		ft_is_sep(char c, char *charset)
+19c21
+< 		if (str == *charset)
+---
+> 		if (c == *charset)
+26c28
+< char	**alloc_tab(char **tab, char *str, char *charset)
+---
+> char	**alloc_table(char **table, char *str, char *charset)
+35c37
+< 	while (str[i])
+---
+> 	while (str[i] != '\0')
+47,50c49,51
+< 	if (!(tab = (char**)malloc(sizeof(char *) * (n_words + 1))))
+< 		return (0);
+< 	tab[n_words] = NULL;
+< 	return (tab);
+---
+> 	table = (char**)malloc(sizeof(*table) * (n_words + 1));
+> 	table[n_words] = 0x0;
+> 	return (table);
+53c54
+< char	**alloc_words(char **tab, char *str, char *charset)
+---
+> char	**alloc_words(char **table, char *str, char *charset)
+64c65
+< 	while (str[i])
+---
+> 	while (str[i] != '\0')
+69c70
+< 			tab[j] = (char*)malloc(sizeof(**tab) * (k + 1));
+---
+> 			table[j] = (char*)malloc(sizeof(**table) * (k + 1));
+77c78
+< 	return (tab);
+---
+> 	return (table);
+80c81
+< char	**fill_tab(char **tab, char *str, char *charset)
+---
+> char	**fill_table(char **table, char *str, char *charset)
+82,84c83,85
+< 	int		i;
+< 	int		j;
+< 	int		k;
+---
+> 	int	i;
+> 	int	j;
+> 	int	k;
+89d89
+< 
+92c92
+< 	while (str[i])
+---
+> 	while (str[i] != '\0')
+94c94
+< 		tab[k][j] = str[i];
+---
+> 		table[j][k] = str[i];
+99c99
+< 			tab[k][j] = '\0';
+---
+> 			table[j][k] = '\0';
+106c106
+< 	return (tab);
+---
+> 	return (table);
+111c111
+< 	char	**tab;
+---
+> 	char	**table;
+113,117c113,117
+< 	tab = NULL;
+< 	tab = alloc_tab(tab, str, charset);
+< 	tab = alloc_words(tab, str, charset);
+< 	tab = fill_tab(tab, str, charset);
+< 	return (tab);
+---
+> 	table = NULL;
+> 	table = alloc_table(table, str, charset);
+> 	table = alloc_words(table, str, charset);
+> 	table = fill_table(table, str, charset);
+> 	return (table);

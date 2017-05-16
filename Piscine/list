@@ -1,0 +1,2 @@
+(find . -type d && find . -type f) | wc -l| bc
+(find . -type d && find . -type f) | sort

@@ -1,0 +1,5 @@
+Credentials cache: API:23509
+        Principal: yzhu@42.US.ORG
+
+  Issued                Expires               Principal
+Apr 30 14:59:44 2017  May  1 00:59:44 2017  krbtgt/42.US.ORG@42.US.ORG
